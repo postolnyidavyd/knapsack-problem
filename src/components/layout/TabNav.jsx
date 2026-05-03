@@ -15,7 +15,6 @@ export default function TabNav() {
           style={({ isActive }) => isActive ? { '--color': tab.color } : {}}
         >
           <span className={styles.label}>{tab.label}</span>
-          <span className={styles.complexity}>{tab.complexity}</span>
         </NavLink>
       ))}
     </nav>
