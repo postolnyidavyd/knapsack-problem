@@ -11,6 +11,7 @@ import './styles/global.css';
 import styles from './App.module.css';
 import Recursion from "./pages/Recursion.jsx";
 import DynamicProgramming from "./pages/DynamicProgramming.jsx";
+import Greedy from "./pages/Greedy.jsx";
 
 export default function App() {
   return (
@@ -26,8 +27,8 @@ export default function App() {
                   <Route path="/brute"     element={<BruteForce />} />
                   <Route path="/recursion" element={<Recursion />} />
                   <Route path="/dp"        element={<DynamicProgramming />} />
-                  <Route path="/greedy"    element={<Placeholder label="Жадібний"       color="var(--col-greedy)" />} />
-                  <Route path="/bnb"       element={<Placeholder label="Гілки і межі"   color="var(--col-bnb)"    />} />
+                  <Route path="/greedy"    element={<Greedy />} />
+                  <Route path="/bnb" element={<Placeholder title="Branch and Bound" />} />
               </Routes>
           </main>
         </div>
