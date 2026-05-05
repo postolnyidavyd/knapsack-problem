@@ -12,6 +12,7 @@ import Recursion from "./pages/Recursion.jsx";
 import DynamicProgramming from "./pages/DynamicProgramming.jsx";
 import Greedy from "./pages/Greedy.jsx";
 import BranchBound from "./pages/BranchBound.jsx";
+import Compare from "./pages/Compare.jsx";
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
                   <Route path="/dp"        element={<DynamicProgramming />} />
                   <Route path="/greedy"    element={<Greedy />} />
                   <Route path="/bnb"       element={<BranchBound />} />
+                  <Route path="/compare"   element={<Compare/>} />
               </Routes>
           </main>
         </div>

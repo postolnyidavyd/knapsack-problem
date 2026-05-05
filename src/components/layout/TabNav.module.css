@@ -36,9 +36,3 @@
   font-weight: 500;
 }
 
-.complexity {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  color: inherit;
-  opacity: 0.6;
-}

@@ -14,7 +14,8 @@
 }
 
 .hint {
-  font-family: var(--mono);
+      font-family: var(--mono), monospace;
+, monospace;
   font-size: 0.75rem;
   color: var(--text-3);
 }

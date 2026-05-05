@@ -24,7 +24,9 @@
   transition: opacity 0.15s;
 }
 
-.btnPrimary:hover { opacity: 0.85; }
+.btnPrimary:hover {
+  opacity: 0.85;
+}
 
 .btnSecondary {
   padding: 7px 14px;
@@ -33,7 +35,9 @@
   border: 1px solid var(--border);
   border-radius: var(--r);
   font-size: 0.83rem;
-  transition: color 0.15s, border-color 0.15s;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
 }
 
 .btnSecondary:hover:not(:disabled) {
@@ -60,7 +64,7 @@
 }
 
 .counter {
-  font-family: var(--mono);
+  font-family: var(--mono), monospace;
   font-size: 0.75rem;
   color: var(--text-3);
   margin-left: 4px;
@@ -120,7 +124,9 @@
   transition: color 0.2s;
 }
 
-.mono { font-family: var(--mono); }
+.mono {
+  font-family: var(--mono), monospace;
+}
 
 /* Item cards */
 .items {
@@ -138,18 +144,20 @@
   border-radius: var(--r);
   border: 1px solid var(--border);
   background: var(--surface);
-  transition: border-color 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
   min-width: 64px;
 }
 
 .itemIdx {
   font-size: 0.72rem;
   color: var(--text-3);
-  font-family: var(--mono);
+  font-family: var(--mono), monospace;
 }
 
 .itemStat {
-  font-family: var(--mono);
+  font-family: var(--mono), monospace;
   font-size: 0.8rem;
   color: var(--text-2);
 }
@@ -159,28 +167,36 @@
   background: color-mix(in srgb, var(--col-dp) 8%, var(--surface));
 }
 
-.itemCard.valid .itemStat { color: var(--col-dp); }
+.itemCard.valid .itemStat {
+  color: var(--col-dp);
+}
 
 .itemCard.invalid {
   border-color: var(--col-brute);
   background: color-mix(in srgb, var(--col-brute) 8%, var(--surface));
 }
 
-.itemCard.invalid .itemStat { color: var(--col-brute); }
+.itemCard.invalid .itemStat {
+  color: var(--col-brute);
+}
 
 .itemCard.new-best {
   border-color: gold;
   background: color-mix(in srgb, gold 10%, var(--surface));
 }
 
-.itemCard.new-best .itemStat { color: gold; }
+.itemCard.new-best .itemStat {
+  color: gold;
+}
 
 .itemCard.best {
   border-color: gold;
   background: color-mix(in srgb, gold 10%, var(--surface));
 }
 
-.itemCard.best .itemStat { color: gold; }
+.itemCard.best .itemStat {
+  color: gold;
+}
 
 /* Mask bits row */
 .maskRow {
@@ -190,13 +206,13 @@
 }
 
 .maskLabel {
-  font-family: var(--mono);
+  font-family: var(--mono), monospace;
   font-size: 0.72rem;
   color: var(--text-3);
 }
 
 .bit {
-  font-family: var(--mono);
+  font-family: var(--mono), monospace;
   font-size: 0.9rem;
   width: 26px;
   height: 26px;
@@ -207,7 +223,9 @@
   background: var(--surface);
   border: 1px solid var(--border);
   color: var(--text-3);
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
 }
 
 .bit.bitOn {
@@ -239,7 +257,7 @@
 .resultLine {
   font-size: 0.85rem;
   color: var(--text-2);
-  font-family: var(--mono);
+  font-family: var(--mono), monospace;
 }
 
 .resultLine strong {
@@ -250,7 +268,7 @@
 .gridTitle {
   font-size: 0.72rem;
   color: var(--text-3);
-  font-family: var(--mono);
+  font-family: var(--mono), monospace;
 }
 
 .grid {
@@ -266,11 +284,21 @@
   cursor: default;
 }
 
-.cell.untried      { background: var(--surface); }
-.cell.tried-invalid { background: color-mix(in srgb, var(--col-brute) 35%, var(--surface)); }
-.cell.tried-valid   { background: color-mix(in srgb, var(--col-dp) 40%, var(--surface)); }
-.cell.current       { background: var(--text); }
-.cell.best          { background: gold; }
+.cell.untried {
+  background: var(--surface);
+}
+.cell.tried-invalid {
+  background: color-mix(in srgb, var(--col-brute) 35%, var(--surface));
+}
+.cell.tried-valid {
+  background: color-mix(in srgb, var(--col-dp) 40%, var(--surface));
+}
+.cell.current {
+  background: var(--text);
+}
+.cell.best {
+  background: gold;
+}
 
 /* Legend */
 .legend {
