@@ -38,7 +38,8 @@
 .speedWrap { display: flex; align-items: center; gap: 8px; margin-left: 8px; }
 .speedLabel { font-size: 0.75rem; color: var(--text-3); }
 .slider { width: 90px; accent-color: var(--text); cursor: pointer; }
-.counter { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); }
+.counter {   font-family: var(--mono), monospace;
+; font-size: 0.75rem; color: var(--text-3); }
 
 /* Статкарти */
 .stats {
@@ -119,7 +120,8 @@
 .sectionHint {
   font-size: 0.68rem;
   color: var(--text-3);
-  font-family: var(--mono);
+    font-family: var(--mono), monospace;
+;
 }
 
 /* Заголовок таблиці */
@@ -143,7 +145,8 @@
   align-items: center;
   padding: 10px 16px;
   border-bottom: 1px solid var(--border);
-  font-family: var(--mono);
+    font-family: var(--mono), monospace;
+;
   font-size: 0.82rem;
   color: var(--text-3);
   transition: background 0.2s, color 0.2s, border-color 0.2s;
@@ -201,7 +204,8 @@
 .bagEmpty {
   font-size: 0.75rem;
   color: var(--text-3);
-  font-family: var(--mono);
+    font-family: var(--mono), monospace;
+;
   padding: 8px 0;
 }
 
@@ -216,14 +220,16 @@
 }
 
 .bagItemNum {
-  font-family: var(--mono);
+    font-family: var(--mono), monospace;
+;
   font-size: 0.72rem;
   color: var(--text-3);
   min-width: 24px;
 }
 
 .bagItemStat {
-  font-family: var(--mono);
+    font-family: var(--mono), monospace;
+;
   font-size: 0.78rem;
   color: var(--text-2);
 }
@@ -231,7 +237,8 @@
 
 .bagItemRatio {
   margin-left: auto;
-  font-family: var(--mono);
+    font-family: var(--mono), monospace;
+;
   font-size: 0.72rem;
   color: var(--col-greedy);
 }
@@ -287,7 +294,8 @@
 .resultLine {
   font-size: 0.82rem;
   color: var(--text-2);
-  font-family: var(--mono);
+    font-family: var(--mono), monospace;
+;
 }
 .resultLine strong { color: var(--text); font-weight: 500; }
 

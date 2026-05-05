@@ -38,8 +38,10 @@
 .speedWrap { display: flex; align-items: center; gap: 8px; margin-left: 8px; }
 .speedLabel { font-size: 0.75rem; color: var(--text-3); }
 .slider { width: 90px; accent-color: var(--text); cursor: pointer; }
-.counter { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); }
-.phase { font-size: 0.75rem; font-family: var(--mono); font-weight: 600; }
+.counter {   font-family: var(--mono), monospace;
+; font-size: 0.75rem; color: var(--text-3); }
+.phase { font-size: 0.75rem;   font-family: var(--mono), monospace;
+; font-weight: 600; }
 
 /* Формула */
 .formulaRow {
@@ -53,13 +55,15 @@
 }
 
 .formula {
-  font-family: var(--mono);
+    font-family: var(--mono), monospace;
+;
   font-size: 0.82rem;
   color: var(--col-dp);
 }
 
 .formulaPlaceholder {
-  font-family: var(--mono);
+    font-family: var(--mono), monospace;
+;
   font-size: 0.82rem;
   color: var(--text-3);
 }
@@ -81,7 +85,8 @@
 /* DP таблиця */
 .table {
   border-collapse: collapse;
-  font-family: var(--mono);
+    font-family: var(--mono), monospace;
+;
   font-size: 0.8rem;
 }
 
@@ -202,14 +207,16 @@
 .itemPath .itemStat { color: var(--col-dp); }
 
 .itemNum {
-  font-family: var(--mono);
+    font-family: var(--mono), monospace;
+;
   font-size: 0.7rem;
   color: var(--text-3);
   min-width: 12px;
 }
 
 .itemStat {
-  font-family: var(--mono);
+    font-family: var(--mono), monospace;
+;
   font-size: 0.78rem;
   color: var(--text-2);
 }
@@ -239,6 +246,7 @@
 .resultLine {
   font-size: 0.82rem;
   color: var(--text-2);
-  font-family: var(--mono);
+    font-family: var(--mono), monospace;
+;
 }
 .resultLine strong { color: var(--text); font-weight: 500; }
