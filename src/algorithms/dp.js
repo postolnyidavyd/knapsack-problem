@@ -1,6 +1,6 @@
 
 export function generateDPSteps(n, W, weights, values) {
-  // Ініціалізація dp[0..n][0..W] = 0
+  // dp[n][w] = 0
   const dp = Array.from({ length: n + 1 }, () => new Array(W + 1).fill(0));
 
   const fillSteps = [];
@@ -30,7 +30,7 @@ export function generateDPSteps(n, W, weights, values) {
     }
   }
 
-  // Відновлення предметів
+  // відновлення предметів
   const recoverySteps = [];
   const items = [];
   let ri = n, rw = W;

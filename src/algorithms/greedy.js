@@ -1,14 +1,5 @@
-// Жадібний алгоритм точно за схемою:
-// 1. Рахуємо r[i] = v[i] / w[i]
-// 2. Сортуємо за спаданням r[i], отримуємо порядок π
-// 3. remainingW = W, totalV = 0, selected = [], j = 0
-// 4. j < n?  →  w[π[j]] <= remainingW?
-//    Так: беремо предмет, j++
-//    Ні:  j++ (пропускаємо)
-// 5. Вивести totalV, selected
-
 export function generateGreedySteps(n, W, weights, values) {
-  // Рахуємо питому цінність
+  // Питома цінність
   const ratios = Array.from({ length: n }, (_, i) => ({
     originalIdx: i,                           // 0-based індекс у вхідному масиві
     w: weights[i],
@@ -16,9 +7,10 @@ export function generateGreedySteps(n, W, weights, values) {
     r: values[i] / weights[i],
   }));
 
-  // Порядок π — індекси після сортування за спаданням r[i]
+
   const sorted = [...ratios].sort((a, b) => b.r - a.r);
-  const pi = sorted.map(item => item.originalIdx); // π[j] = оригінальний індекс
+  //pi - це масив який зберігає оригінальні індекси предметів в масиві, щоб збрегети звязок з оригінальним масивом
+  const pi = sorted.map(item => item.originalIdx);
 
   const steps = [];
   let remainingW = W;
@@ -37,7 +29,7 @@ export function generateGreedySteps(n, W, weights, values) {
 
     steps.push({
       j,
-      idx,                        // який предмет розглядаємо (оригінальний індекс)
+      idx,
       canTake,
       remainingW: canTake ? remainingW : remainingW,
       totalV,
@@ -46,7 +38,7 @@ export function generateGreedySteps(n, W, weights, values) {
   }
 
   return {
-    sorted,   // відсортований список для відображення
+    sorted,
     pi,
     steps,
     result: { totalV, selected },

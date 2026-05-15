@@ -184,7 +184,7 @@ export default function Recursion() {
         onMouseUp={onMouseUp}
         onMouseLeave={onMouseUp}
       >
-        <span className={styles.hint}>scroll — zoom · drag — pan</span>
+        <span className={styles.hint}></span>
 
         <svg width="100%" height="100%" style={{ cursor: dragRef.current ? 'grabbing' : 'grab' }}>
           <g transform={`translate(${vx},${vy}) scale(${scale})`}>

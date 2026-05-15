@@ -12,7 +12,7 @@ export default function Compare() {
 
     const results = useMemo(() => {
         // Груба сила
-        const { steps: bSteps, result: bRes } = (() => {
+        const {  result: bRes } = (() => {
             const { steps } = bruteSteps(n, W, weights, values);
             const last = steps[steps.length - 1];
             const items = getMaskBits(last.bestMask, n)
@@ -27,10 +27,10 @@ export default function Compare() {
         countNodes(recTree);
 
         // DP
-        const { result: dpRes, fillSteps } = generateDPSteps(n, W, weights, values);
+        const { result: dpRes } = generateDPSteps(n, W, weights, values);
 
         // Жадібний
-        const { result: greedyRes, steps: greedySteps } = generateGreedySteps(n, W, weights, values);
+        const { result: greedyRes } = generateGreedySteps(n, W, weights, values);
 
         // Гілки і межі
         const { result: bnbRes, steps: bnbSteps } = generateBnBSteps(n, W, weights, values);
@@ -195,48 +195,6 @@ export default function Compare() {
                     })}
                     </tbody>
                 </table>
-            </div>
-
-            {/* Картки порівняння */}
-            <div className={styles.cards}>
-                {results.map(r => (
-                    <div key={r.id} className={styles.card} style={{ borderColor: r.color }}>
-                        <div className={styles.cardHeader}>
-                            <span className={styles.cardLabel} style={{ color: r.color }}>{r.label}</span>
-                            <span className={styles.cardComplexity}>{r.complexity}</span>
-                        </div>
-                        <div className={styles.cardValue}>{r.value}</div>
-                        <div className={styles.cardItems}>
-                            {r.items.map(i => (
-                                <span key={i} className={styles.itemChip}
-                                      style={{ borderColor: r.color, color: r.color }}>
-                  #{i}
-                </span>
-                            ))}
-                        </div>
-                        <div className={styles.cardMetric}>
-                            <span className={styles.metricBig} style={{ color: r.color }}>{r.metric.value}</span>
-                            <span className={styles.metricLabelSmall}>{r.metric.label}</span>
-                        </div>
-                        {!r.optimal && (
-                            <div className={styles.notOptimal}>не гарантує оптимум</div>
-                        )}
-                    </div>
-                ))}
-            </div>
-
-            {/* Висновок */}
-            <div className={styles.conclusion}>
-                <p className={styles.conclusionTitle}>Висновок</p>
-                <p className={styles.conclusionText}>
-                    Оптимальна цінність для даного варіанту: <strong>{optimalValue}</strong>.{' '}
-                    {results.find(r => r.id === 'greedy')?.value === optimalValue
-                        ? 'Жадібний алгоритм у даному випадку збігся з оптимальним, однак це не гарантується для довільних вхідних даних.'
-                        : `Жадібний алгоритм дав результат ${results.find(r => r.id === 'greedy')?.value}, що на ${Math.abs(results.find(r => r.id === 'greedy')?.value - optimalValue)} менше оптимального — типовий приклад де жадібна стратегія програє.`
-                    }{' '}
-                    Метод гілок і меж знаходить оптимум але відсікає зайві гілки, що робить його ефективнішим за повний перебір.
-                    Динамічне програмування гарантує оптимум за O(n·W) — найефективніший з точних методів для цілочислельних ваг.
-                </p>
             </div>
         </div>
     );

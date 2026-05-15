@@ -1,7 +1,6 @@
 import { hierarchy, tree as d3tree } from 'd3-hierarchy';
 
-// Жадібна верхня оцінка (UB) для вузла:
-// беремо предмети починаючи з node.i дробово (relaxation)
+// Жадібна верхня оцінка (UB) для вузла
 function upperBound(nodeI, nodeW, nodeV, n, sortedWeights, sortedValues) {
   let w = nodeW;
   let v = nodeV;
@@ -10,7 +9,7 @@ function upperBound(nodeI, nodeW, nodeV, n, sortedWeights, sortedValues) {
       w -= sortedWeights[i];
       v += sortedValues[i];
     } else {
-      // Беремо дробову частину
+      // ьеремо дробову частину
       v += sortedValues[i] * (w / sortedWeights[i]);
       break;
     }
@@ -18,9 +17,8 @@ function upperBound(nodeI, nodeW, nodeV, n, sortedWeights, sortedValues) {
   return v;
 }
 
-// Генеруємо всі кроки алгоритму + будуємо дерево
 export function generateBnBSteps(n, W, weights, values) {
-  // Сортуємо за спаданням v/w
+
   const sorted = Array.from({ length: n }, (_, i) => ({
     origIdx: i, w: weights[i], v: values[i], r: values[i] / weights[i],
   })).sort((a, b) => b.r - a.r);
@@ -32,11 +30,11 @@ export function generateBnBSteps(n, W, weights, values) {
   let bestItems = [];
   let nodeIdCounter = 0;
 
-  // Дерево вузлів для візуалізації
-  const treeNodes = {};  // id → node
+  // дерево вузлів для візуалізації
+  const treeNodes = {};
   const steps = [];
 
-  // Корінь
+  // корінь
   const root = {
     id: nodeIdCounter++,
     parentId: null,
@@ -54,12 +52,12 @@ export function generateBnBSteps(n, W, weights, values) {
     const node = queue.pop();
     node.status = 'active';
 
-    // Рахуємо UB
+    // рахуємо UB
     const ub = upperBound(node.i, node.w, node.v, n, sw, sv);
     node.ub = parseFloat(ub.toFixed(2));
 
     if (ub <= bestValue) {
-      // Відсікаємо гілку
+      // відсікаємо гілку
       node.status = 'pruned';
       steps.push({
         type: 'prune',
@@ -72,7 +70,7 @@ export function generateBnBSteps(n, W, weights, values) {
     }
 
     if (node.i >= n) {
-      // Листовий вузол
+      // листовий вузол
       node.status = 'leaf';
       if (node.v > bestValue) {
         bestValue = node.v;
@@ -96,11 +94,11 @@ export function generateBnBSteps(n, W, weights, values) {
       continue;
     }
 
-    // Розширюємо вузол
+    // розширюємо вузол
     node.status = 'expanded';
     const childNodes = [];
 
-    // Гілка "взяти" (якщо влізе)
+    // гілка взяти якщо влізе
     if (node.w >= sw[node.i]) {
       const takeNode = {
         id: nodeIdCounter++,
@@ -119,7 +117,7 @@ export function generateBnBSteps(n, W, weights, values) {
       childNodes.push(takeNode);
     }
 
-    // Гілка "не брати"
+    // гілка не брати
     const skipNode = {
       id: nodeIdCounter++,
       parentId: node.id,
@@ -145,12 +143,12 @@ export function generateBnBSteps(n, W, weights, values) {
       snapshot: buildSnapshot(treeNodes),
     });
 
-    // Додаємо у стек (спочатку skip, потім take — щоб take оброблявся першим)
+
     queue.push(skipNode);
     if (node.w >= sw[node.i]) queue.push(treeNodes[node.children[0]]); // takeNode
   }
 
-  // Фінальний крок
+  // фінальний крок
   steps.push({
     type: 'done',
     bestValue,
@@ -161,7 +159,7 @@ export function generateBnBSteps(n, W, weights, values) {
   return { steps, treeNodes, sorted, result: { bestValue, bestItems } };
 }
 
-// Snapshot — копія статусів всіх вузлів для конкретного кроку
+// Snapshot копія всіх вузлів конкретног виклику
 function buildSnapshot(treeNodes) {
   const snap = {};
   Object.values(treeNodes).forEach(n => {
@@ -174,12 +172,11 @@ function buildSnapshot(treeNodes) {
   return snap;
 }
 
-// Layout через d3-hierarchy для snapshot
+// побудова через D3 для снепшотів
 export function computeBnBLayout(snapshot, spacingX = 54, spacingY = 80) {
   const rootNode = Object.values(snapshot).find(n => n.parentId === null);
   if (!rootNode) return { nodes: [], links: [] };
 
-  // Будуємо ієрархію з snapshot
   function buildHierarchy(node) {
     return {
       ...node,

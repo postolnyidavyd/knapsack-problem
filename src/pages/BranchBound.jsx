@@ -171,7 +171,7 @@ export default function BranchBound() {
           onMouseUp={onMouseUp}
           onMouseLeave={onMouseUp}
         >
-          <span className={styles.hint}>scroll — zoom · drag — pan</span>
+          <span className={styles.hint}></span>
 
           {/* Легенда */}
           <div className={styles.legend}>
